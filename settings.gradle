@@ -1,0 +1,4 @@
+include ':app'
+include ':openCVLibrary346'
+include ':libs:opencv'
+include 'opencv_java3'
