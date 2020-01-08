@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_main_setting"
+        android:orderInCategory="100"
+        android:actionLayout="@layout/tbox"
+        android:title="COLOR_BGR2GRAY" />
+
+    <item
+        android:id="@+id/menu_main_setting2"
+        android:orderInCategory="200"
+        android:actionLayout="@layout/tbox"
+        android:title="COLOR_RGB2YUV" />
+    <item
+        android:id="@+id/menu_main_setting3"
+        android:orderInCategory="200"
+        android:actionLayout="@layout/tbox"
+        android:title="COLOR_RGB2HSV" />
+    <item
+        android:id="@+id/menu_main_setting4"
+        android:orderInCategory="200"
+        android:actionLayout="@layout/tbox"
+        android:title="COLOR_RGB2Luv" />
+</menu>

@@ -1,11 +1,13 @@
 package com.example.opencv_app;
 
+import android.Manifest;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Camera;
 import android.hardware.camera2.*;
 import android.provider.MediaStore;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -27,7 +29,7 @@ import org.opencv.imgproc.Imgproc;
 
 import java.io.FileOutputStream;
 
-public class MainActivity extends AppCompatActivity implements CameraBridgeViewBase.CvCameraViewListener2 {
+public class MainActivity extends AppCompatActivity {//implements CameraBridgeViewBase.CvCameraViewListener2 {
 private static final int PICK_IMAGE = 100;
     private static final String TAG = "MainActivity";
     private JavaCameraView mOpenCvCameraView;
@@ -41,21 +43,9 @@ private static final int PICK_IMAGE = 100;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-       // super.onCreate(savedInstanceState);
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-       // setContentView(R.layout.activity_main);
-        mButton = (Button) findViewById(R.id.tc);
-        mOpenCvCameraView = (JavaCameraView) findViewById(R.id.java_camera_view);
-        mOpenCvCameraView.setCvCameraViewListener(this);
-        mOpenCvCameraView.setVisibility(SurfaceView.VISIBLE);
-        mOpenCvCameraView.setCvCameraViewListener(this);
-        mButton.setOnClickListener(new View.OnClickListener() { // take a picture
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
+        ActivityCompat.requestPermissions(MainActivity.this,
+                new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                1);
 
     }
     public void opengallery(View v){
@@ -75,7 +65,7 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
              startActivity(intent);
         }
 }
-    BaseLoaderCallback mBaseLoaderCallback = new BaseLoaderCallback(this) {
+  /*  BaseLoaderCallback mBaseLoaderCallback = new BaseLoaderCallback(this) {
         @Override
         public void onManagerConnected(int status) {
             super.onManagerConnected(status);
@@ -134,6 +124,14 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         Imgproc.cvtColor(mRgba, imGgray, Imgproc.COLOR_RGB2GRAY);
         Imgproc.adaptiveThreshold(imGgray, mByte, 255, Imgproc.ADAPTIVE_THRESH_MEAN_C, Imgproc.THRESH_BINARY, 35, 5);
         return mByte; // this is m Binary image
+    }*/
+    public void camv(View v){
+        // Start
+        ActivityCompat.requestPermissions(MainActivity.this,
+                new String[]{Manifest.permission.CAMERA},
+                1);
+        //END
+        Intent i = new Intent(this,CVcam.class);
+        startActivity(i);
     }
-
 }

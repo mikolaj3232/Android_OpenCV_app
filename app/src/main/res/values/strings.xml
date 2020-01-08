@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">OpenCV_app</string>
+
+    <string name="title_activity_cvcam">CVcam</string>
 </resources>
